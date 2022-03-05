@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" name="viewport" content="width=device-width, initial-scale=1, text/html;charset=utf-8">
+  <meta http-equiv="content-type" name="viewport" content="width=device-width, initial-scale=1, text/html, charset=utf-8">
   <title>^_^</title>
   <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/buttons.css" />
 
@@ -15,27 +14,53 @@
 </head>
 <body background="https://jx.cjw123.com/static/images/bj.png">
 
-<p style="text-align: center"><img width="90%" src="https://img.alicdn.com/bao/uploaded/i2/1615368232/O1CN01kgbkL92AgJ9kOsjrw-1615368232.jpg">
-  <input style="background-color:transparent;border:none;" type="text" id="copy" value="1.0 d:/$wOF82fflOeZ$" readonly="readonly"><br></p><hr>
+<p style="text-align: center"><img id="img_url" width="90%" src="">
+  <input id="tkl" style="background-color:transparent;border:none;" type="text" value="" readonly="readonly"><br></p><hr>
 
-<div id = "niu" class="div-c">原价: </div>
-<div class="div-d">现价: </div>
-<div class="div-c">券儿: </div>
-<div class="div-d">补贴: </div>
+<div id="original_price" class="div-c">原价: </div>
+<div id="present_price" class="div-d">现价: </div>
+<div id="subsidy" class="div-c">券儿: </div>
+<div id="rebate" class="div-d">补贴: </div>
 
 <br><br><br><hr>
 
 <p style="text-align: center">
   <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
-  |
-  <a class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
+  <a style="color:#FFFFFF;"> | </a>
+  <a id="tb_url" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
 
 
 <script>
+  window.onload = function(){
+    $token = JSON.parse(atob(getQueryVariable("token")));
+    document.getElementById("img_url").src = $token["img_url"]; // 图片地址
+    document.getElementById("tkl").value = $token["tkl"]; // 淘口令
+    document.getElementById("tb_url").href = $token["tb_url"].replace(/https/, "taobao").replace(/http/, "taobao"); // 商品链接
+    
+    document.getElementById("original_price").innerHTML = document.getElementById("original_price").innerHTML+$token["original_price"]; // 原价
+    document.getElementById("present_price").innerHTML = document.getElementById("present_price").innerHTML+$token["present_price"]; // 现价
+    document.getElementById("subsidy").innerHTML = document.getElementById("subsidy").innerHTML+$token["subsidy"]; // 优惠券
+    document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
+
+  }
+
+  // 复制
   function copyText() {
-    var text = document.getElementById("copy").value;
-    document.getElementById("copy").select();
+    document.getElementById("tkl").select();
     document.execCommand("copy");
+  }
+
+  // 获取get参数
+  function getQueryVariable(variable)
+  {
+    var query = window.location.search.substring(1);
+    var vars = query.replace("%26", "&").split("&");
+
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
   }
 
 </script>
