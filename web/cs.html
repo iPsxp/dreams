@@ -27,21 +27,32 @@
 <p style="text-align: center">
   <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
   <a style="color:#FFFFFF;"> | </a>
-  <a id="tb_url" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
+  <a id="tb_url" display="none" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
 
 
 <script>
   window.onload = function(){
     $token = JSON.parse(atob(getQueryVariable("token")));
     document.getElementById("img_url").src = $token["img_url"]; // 图片地址
-    document.getElementById("tkl").value = navigator.userAgent; // 淘口令
+    document.getElementById("tkl").value = $token["tkl"]; // 淘口令
     document.getElementById("tb_url").href = $token["tb_url"].replace(/https/, "taobao").replace(/http/, "taobao"); // 商品链接
-    
+
     document.getElementById("original_price").innerHTML = document.getElementById("original_price").innerHTML+$token["original_price"]; // 原价
     document.getElementById("present_price").innerHTML = document.getElementById("present_price").innerHTML+$token["present_price"]; // 现价
     document.getElementById("subsidy").innerHTML = document.getElementById("subsidy").innerHTML+$token["subsidy"]; // 优惠券
     document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
 
+    if (isWeiXin() == true){
+      document.getElementById("tb_url").style.display = "none"
+    }
+
+  }
+
+  function whatBrowser() {
+    document.Browser.Name.value=navigator.appName;
+    document.Browser.Version.value=navigator.appVersion;
+    document.Browser.Code.value=navigator.appCodeName;
+    document.Browser.Agent.value=navigator.userAgent;
   }
 
   // 复制
@@ -61,6 +72,16 @@
       if(pair[0] == variable){return pair[1];}
     }
     return(false);
+  }
+
+  // 判断是否微信
+  function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();// 不加window部分Android机会显示不了提示图，即判断不了是否是微信
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 </script>
