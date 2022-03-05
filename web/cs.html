@@ -25,16 +25,19 @@
 <br><br><br><hr>
 
 <p style="text-align: center">
-  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
+  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制0口令</a>
   <a style="color:#FFFFFF;"> | </a>
   <a id="tb_url" display="none" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js">
-wx.ready(function() {
-   wx.hideMenuItems({
-       menuList: ["menuItem:copyUrl","menuItem:editTag","menuItem:delete","menuItem:originPage","menuItem:readMode", "menuItem:openWithQQBrowser", "menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand","menuItem:share:qq","menuItem:share:QZone"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮
-   });
-});
+<script>
+  // var vConsole = new VConsole();
+  document.addEventListener(
+    "WeixinJSBridgeReady",
+    function onBridgeReady() {
+      // 通过下面这个API隐藏右上角按钮
+      WeixinJSBridge.call("hideOptionMenu");
+    }
+  );
 </script>
   
 <script>
