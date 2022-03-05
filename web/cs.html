@@ -1,18 +1,44 @@
-<!--
- * sandbox="allow-scripts allow-same-origin allow-popups"
- * author:wenqd
- * email:309820722@qq.com
- * date:2019-09-18 09:34
--->
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>图片二维码识别</title>
-</head>
-<body>
+  <meta http-equiv="content-type" name="viewport" content="width=device-width, initial-scale=1, text/html;charset=utf-8">
+  <title>^_^</title>
+  <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/buttons.css" />
 
-<iframe width="100%" height="700" src="https://s.click.taobao.com/IcJC6au" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  <style>
+    .div-c{ float:left;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
+    .div-d{ float:right;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
+  </style>
+
+
+</head>
+<body background="https://jx.cjw123.com/static/images/bj.png">
+
+<p style="text-align: center"><img width="90%" src="https://img.alicdn.com/bao/uploaded/i2/1615368232/O1CN01kgbkL92AgJ9kOsjrw-1615368232.jpg">
+  <input style="background-color:transparent;border:none;" type="text" id="copy" value="1.0 d:/$wOF82fflOeZ$" readonly="readonly"><br></p><hr>
+
+<div id = "niu" class="div-c">原价: </div>
+<div class="div-d">现价: </div>
+<div class="div-c">券儿: </div>
+<div class="div-d">补贴: </div>
+
+<br><br><hr>
+
+<p style="text-align: center">
+  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
+  |
+  <a class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
+
+
+<script>
+  function copyText() {
+    var text = document.getElementById("copy").value;
+    document.getElementById("copy").select();
+    document.execCommand("copy");
+  }
+
+</script>
 
 </body>
 </html>
