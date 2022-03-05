@@ -34,7 +34,7 @@
   window.onload = function(){
     $token = JSON.parse(atob(getQueryVariable("token")));
     document.getElementById("img_url").src = $token["img_url"]; // 图片地址
-    document.getElementById("tkl").value = $token["tkl"]; // 淘口令
+    document.getElementById("tkl").value = navigator.userAgent; // 淘口令
     document.getElementById("tb_url").href = $token["tb_url"].replace(/https/, "taobao").replace(/http/, "taobao"); // 商品链接
     
     document.getElementById("original_price").innerHTML = document.getElementById("original_price").innerHTML+$token["original_price"]; // 原价
