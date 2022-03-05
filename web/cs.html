@@ -25,21 +25,12 @@
 <br><br><br><hr>
 
 <p style="text-align: center">
-  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制0口令</a>
+  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
   <a style="color:#FFFFFF;"> | </a>
   <a id="tb_url" display="none" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
 
-<script>
-  // var vConsole = new VConsole();
-  document.addEventListener(
-    "WeixinJSBridgeReady",
-    function onBridgeReady() {
-      // 通过下面这个API隐藏右上角按钮
-      WeixinJSBridge.call("hideOptionMenu");
-    }
-  );
-</script>
-  
+
+
 <script>
   window.onload = function(){
     $token = JSON.parse(atob(getQueryVariable("token")));
@@ -53,7 +44,16 @@
     document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
 
     if (isWeiXin() == true){
+      // 隐藏跳转按钮
       document.getElementById("tb_url").style.display = "none"
+
+      // 隐藏分享按钮
+      document.addEventListener("WeixinJSBridgeReady", function onBridgeReady() {
+                // 通过下面这个API隐藏右上角按钮
+                WeixinJSBridge.call("hideOptionMenu");
+              }
+      );
+
     }
 
   }
