@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/buttons.css" />
 
   <style>
+    .div-dpm{ float:left;width:89%;font-family:"楷体";font-size: 19px;font-style: normal;}
     .div-c{ float:left;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
     .div-d{ float:right;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
   </style>
@@ -17,14 +18,13 @@
 <p style="text-align: center"><img id="img_url" width="90%" src="">
   <input id="tkl" style="background-color:transparent;border:none;" type="text" value="" readonly="readonly"><br></p><hr>
 
-<div id="wangwang" class="div-c">旺旺: </div>
-<div id="monthly_sales" class="div-d">月销: </div>
+<div id="wangwang" class="div-dpm">旺旺: </div>
+<!--<div id="monthly_sales" class="div-d">月销: </div>-->
 <div id="original_price" class="div-c">原价: </div>
 <div id="present_price" class="div-d">现价: </div>
 <div id="subsidy" class="div-c">券儿: </div>
 <div id="rebate" class="div-d">补贴: </div>
-
-<br><br><br><hr>
+<br><br><hr>
 
 <p style="text-align: center">
   <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
@@ -36,8 +36,6 @@
 <p id="lz"><a style="color: #FF0000">结算规则:</a><br>每月25-28号可提现上月已收货订单，日期到了会逐步到账，无需手动申请。<br><br>举例:<br>
   ① <a style="color: blue">10月</a>下单的, <a style="color: blue">10月</a>确认收货, 则<a style="color: blue">11月25-28</a>可以到账!<br>
   ② <a style="color: blue">10月</a>下单的, <a style="color: blue">11月</a>确认收货, 则<a style="color: blue">12月25-28</a>可以到账!</p>
-
-
 
 <script>
   window.onload = function(){
@@ -51,7 +49,7 @@
     document.getElementById("tb_url").href = $token["tb_url"].replace(/https/, "taobao").replace(/http/, "taobao"); // 商品链接
 
     document.getElementById("wangwang").innerHTML = document.getElementById("wangwang").innerHTML+$token["wangwang"]; // 旺旺
-    document.getElementById("monthly_sales").innerHTML = document.getElementById("monthly_sales").innerHTML+$token["monthly_sales"]; // 月销
+    // document.getElementById("monthly_sales").innerHTML = document.getElementById("monthly_sales").innerHTML+$token["monthly_sales"]; // 月销
     document.getElementById("original_price").innerHTML = document.getElementById("original_price").innerHTML+$token["original_price"]; // 原价
     document.getElementById("present_price").innerHTML = document.getElementById("present_price").innerHTML+$token["present_price"]; // 现价
     document.getElementById("subsidy").innerHTML = document.getElementById("subsidy").innerHTML+$token["subsidy"]; // 优惠券
