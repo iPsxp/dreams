@@ -29,10 +29,20 @@
   <a style="color:#FFFFFF;"> | </a>
   <a id="tb_url" display="none" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a></p><hr>
 
+<h4>问题:</h4>
+<p><a style="color: #FF0000">如何找回订单:</a><br>正常下单5分钟内会自动提示你，如果没反应可以手动发送订单号找回。</p>
+<p id="lz"><a style="color: #FF0000">结算规则:</a><br>每月25-28号可提现上月已收货订单，日期到了会逐步到账，无需手动申请。<br><br>举例:<br>
+  ① <a style="color: blue">10月</a>下单的, <a style="color: blue">10月</a>确认收货, 则<a style="color: blue">11月25-28</a>可以到账!<br>
+  ② <a style="color: blue">10月</a>下单的, <a style="color: blue">11月</a>确认收货, 则<a style="color: blue">12月25-28</a>可以到账!</p>
+
 
 
 <script>
   window.onload = function(){
+    var date = new Date(); //得到当前日期原始模式
+    var newmonth = date.getMonth() + 1; //得到当前日期月份（注意： getMonth()方法一月为 0, 二月为 1, 以此类推。）
+    document.getElementById("lz").innerHTML = document.getElementById("lz").innerHTML.replace(/10/g, newmonth - 1).replace(/11/g, newmonth).replace(/12/g, newmonth + 1);
+
     $token = JSON.parse(atob(getQueryVariable("token")));
     document.getElementById("img_url").src = $token["img_url"]; // 图片地址
     document.getElementById("tkl").value = $token["tkl"]; // 淘口令
