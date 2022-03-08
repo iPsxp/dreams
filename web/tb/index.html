@@ -57,7 +57,6 @@
     document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
 
     if (isWeiXin() == true){
-      alert("ps: 新版系统暂不支持找回订单、查询积分等功能，预计3.12号数据同步后支持自动找回。\n建议使用QQ查询，支持一键跳转tb。\n若微信掉线/不回复QQ，不受影响。");
 
       // 隐藏跳转按钮
       document.getElementById("tb_url").style.display = "none"
@@ -68,6 +67,8 @@
                 WeixinJSBridge.call("hideOptionMenu");
               }
       );
+
+      alert("ps: 新版系统暂不支持找回订单、查询积分等功能，预计3.12号数据同步后支持自动找回。\n建议使用QQ查询，支持一键跳转tb。\n若微信掉线/不回复QQ，不受影响。\nQQ: 1491575386");
 
     }
 
