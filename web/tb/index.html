@@ -56,10 +56,7 @@
     document.getElementById("present_price").innerHTML = document.getElementById("present_price").innerHTML+$token["present_price"]; // 现价
     document.getElementById("subsidy").innerHTML = document.getElementById("subsidy").innerHTML+$token["subsidy"]; // 优惠券
     document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
-    
-    alert("ps: 新版系统暂不支持找回订单、查询积分等功能，预计3.12号数据同步后支持自动找回。\n建议使用QQ，支持一键跳转tb。\n若微信掉线/不回复，QQ不受影响。");
-    // \n建议使用QQ，支持一键跳转tb。\n若微信掉线/不回复，QQ不受影响。
-    
+
     if (isWeiXin() == true){
 
       // 隐藏跳转按钮
@@ -75,15 +72,10 @@
               }
       );
 
+      alert("ps: 新版系统暂不支持找回订单、查询积分等功能，预计3.12号数据同步后支持自动找回。\n建议使用QQ，支持一键跳转tb。\n若微信掉线/不回复，QQ不受影响。");
+
     }
 
-  }
-
-  function whatBrowser() {
-    document.Browser.Name.value=navigator.appName;
-    document.Browser.Version.value=navigator.appVersion;
-    document.Browser.Code.value=navigator.appCodeName;
-    document.Browser.Agent.value=navigator.userAgent;
   }
 
   // 复制
