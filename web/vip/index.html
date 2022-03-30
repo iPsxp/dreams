@@ -59,7 +59,7 @@
     <br>
     <div class="input-group" style="width: 100%;">
         <span class="input-group-addon input-lg" style="width: 80px;">播放地址</span>
-        <input class="form-control input-lg" type="search" placeholder="长按粘贴视频网址" id="url">
+        <input class="form-control input-lg" type="search" placeholder="长按粘贴视频网址" id="url" value = "">
     </div>
     <br><a style="color:#FF0000">注意：bilibili复制的地址需要放到浏览器里访问之后再复制一遍网址栏的地址，才可以正常识别！</a>
     <div>
@@ -104,6 +104,27 @@
     </tr>
     </tbody>
 </table>
+
+<script>
+    window.onload = function(){
+        document.getElementById("url").value = getQueryVariable("url");
+        
+    }
+    
+    // 获取get参数
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.replace("%26", "&").split("&");
+
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+                                        
+</script>
 
 </body>
 </html>
