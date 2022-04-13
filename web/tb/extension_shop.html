@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" name="viewport" content="width=device-width, initial-scale=1, text/html, charset=utf-8">
+  <title>^_^</title>
+  <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/buttons.css" />
+
+  <style>
+    .div-dpm{ float:left;width:89%;font-family:"楷体";font-size: 19px;font-style: normal;}
+    .div-c{ float:left;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
+    .div-d{ float:right;width:49%;font-family:"楷体";font-size: 19px;font-style: normal;}
+  </style>
+
+
+</head>
+<body background="https://jx.cjw123.com/static/images/bj.png">
+
+<p style="text-align: center"><img id="img_url" width="90%" src="https://i03piccdn.sogoucdn.com/28901d6ce19b98cb">
+  <input id="tkl" style="background-color:transparent;border:none;" type="text" value="" readonly="readonly"><br></p><hr>
+
+<div id="wangwang" class="div-dpm">旺旺: </div>
+<!--<div id="monthly_sales" class="div-d">月销: </div>
+<div id="original_price" class="div-c">原价: </div>
+<div id="present_price" class="div-d">现价: </div>
+<div id="subsidy" class="div-c">券儿: </div>
+<div id="rebate" class="div-d">补贴: </div>-->
+
+<br><br><br><br><br><hr>
+
+<p style="text-align: center">
+  <a class="button button-glow button-rounded button-royal" onclick="copyText(); this.innerHTML='复制成功';">复制口令</a>
+  <a style="color:#FFFFFF;"> | </a>
+  <a id="tb_url" href="" class="button button-glow button-rounded button-royal">跳转淘宝</a>
+  <a id="add_qq" style="display: none" href="https://ti.qq.com/open_qq/index2.html?url=mqqapi%3a%2f%2fuserprofile%2ffriend_profile_card%3fsrc_type%3dweb%26version%3d1.0%26source%3d2%26uin%3d1491575386" class="button button-glow button-rounded button-royal">添加扣扣</a></p><hr>
+  <p>使用方法:<br> 点击复制口令打开桃宝搜索宝贝标题拍下即可！</p><hr>
+
+<h4>问题:</h4>
+<p><a style="color: #FF0000">如何找回订单:</a><br>此类订单<a style="color: #FF0000">必须</a>下单后手动发送单号找回！！</p>
+<p id="lz"><a style="color: #FF0000">结算规则:</a><br>每月25-28号可提现上月已收货订单，日期到了会逐步到账，无需手动申请。<br><br>举例:<br>
+  ① <a style="color: blue">10月</a>下单的, <a style="color: blue">10月</a>确认收货, 则<a style="color: blue">11月25-28</a>可以到账!<br>
+  ② <a style="color: blue">10月</a>下单的, <a style="color: blue">11月</a>确认收货, 则<a style="color: blue">12月25-28</a>可以到账!</p>
+
+<script>
+  window.onload = function(){
+    var date = new Date(); //得到当前日期原始模式
+    var newmonth = date.getMonth() + 1; //得到当前日期月份（注意： getMonth()方法一月为 0, 二月为 1, 以此类推。）
+    document.getElementById("lz").innerHTML = document.getElementById("lz").innerHTML.replace(/10/g, newmonth).replace(/11/g, newmonth + 1).replace(/12/g, newmonth + 2);
+    $token = JSON.parse(decodeURIComponent(escape(atob(getQueryVariable("token")))));
+
+    // document.getElementById("img_url").src = $token["img_url"]; // 图片地址
+    document.getElementById("tkl").value = "1.0 d:/"+$token["tkl"]; // 淘口令
+    document.getElementById("tb_url").href = $token["tb_url"].replace(/https/, "taobao").replace(/http/, "taobao"); // 商品链接
+
+    document.getElementById("wangwang").innerHTML = document.getElementById("wangwang").innerHTML+$token["wangwang"]; // 旺旺
+    // document.getElementById("monthly_sales").innerHTML = document.getElementById("monthly_sales").innerHTML+$token["monthly_sales"]; // 月销
+    // document.getElementById("original_price").innerHTML = document.getElementById("original_price").innerHTML+$token["original_price"]; // 原价
+    // document.getElementById("present_price").innerHTML = document.getElementById("present_price").innerHTML+$token["present_price"]; // 现价
+    // document.getElementById("subsidy").innerHTML = document.getElementById("subsidy").innerHTML+$token["subsidy"]; // 优惠券
+    // document.getElementById("rebate").innerHTML = document.getElementById("rebate").innerHTML+$token["rebate"]; // 返利
+
+    if (isWeiXin() == true){
+
+      // 隐藏跳转按钮
+      document.getElementById("tb_url").style.display = "none"
+
+      // 显示添加QQ按钮
+      document.getElementById("add_qq").style.display = ""
+
+      // 隐藏分享按钮
+      document.addEventListener("WeixinJSBridgeReady", function onBridgeReady() {
+                // 通过下面这个API隐藏右上角按钮
+                WeixinJSBridge.call("hideOptionMenu");
+              }
+      );
+
+      alert("ps: 建议使用QQ，支持一键跳转tb。\n若微信掉线/不回复，QQ不受影响。");
+
+    }
+
+  }
+
+  // 复制
+  function copyText() {
+    document.getElementById("tkl").select();
+    document.execCommand("copy");
+  }
+
+  // 获取get参数
+  function getQueryVariable(variable)
+  {
+    var query = window.location.search.substring(1);
+    var vars = query.replace("%26", "&").split("&");
+
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+  }
+
+  // 判断是否微信
+  function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();// 不加window部分Android机会显示不了提示图，即判断不了是否是微信
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+</script>
+
+</body>
+</html>
