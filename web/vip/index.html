@@ -53,6 +53,7 @@
             <option value="https://vip.parwix.com:4433/player/?url=" selected="">综合+b站 线路</option>
             <option value="https://chaxun.truechat365.com/?url=" selected="">综合高速 线路</option>
             <option value="https://okjx.cc/?url=" selected="">ok 线路</option>
+	    <option value="http://jiexi43.itno.cn/jiexi/?url=" selected="">电影专用 线路</option>
         </select>
     </div>
     <br>
@@ -109,7 +110,15 @@
 		if(getQueryVariable("url") != ""){
 			document.getElementById("url").value = getQueryVariable("url");
 		}
-        
+        	
+	    if(getQueryVariable("jk_type") != ""){
+			var jkid = Number(getQueryVariable("jk_type")) - 1;
+			
+			var select = document.getElementById("jk");
+			select.options[select.selectedIndex].value = select.options[jkid].value;
+			
+		}
+	    
     }
     
     // 获取get参数
