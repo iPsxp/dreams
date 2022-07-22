@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title></title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <title>VG</title>
+
 </head>
 <body>
   <input type="text" id="tentId">
@@ -10,7 +11,7 @@
   <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
 
-    $.getJSON('http://open.iciba.com/dsapi/?callback=?',
+    $.getJSON('https://api.vlightv.com/app/relation/tent/user/status?callback=?',
         function(data){
           document.getElementById("tentId").value = data["data"]["tent"]["tentId"];
         }, 'JSONP'
